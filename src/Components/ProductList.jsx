@@ -1,24 +1,18 @@
 import React from "react";
+import ProductCard from "./ProductCard";
 
 const ProductList = ({ product,status,handleInc,handleDec }) => {
   return (
-    <div>
-      {product.map((ele,id) => {
-        return (
-          <div key={id}>
-            <h1>{ele.title}</h1>
-            <img src={ele.image} alt="" />
-            <h1>{ele.price}</h1>
-            <p>{ele.description}</p>
-            <p>{ele.category}</p>
-            {status ? (
-              <button onClick={handleInc}>Add To Cart</button>
-            ) : (
-              <button onClick={handleDec}>Remove From Cart</button>
-            )}
-          </div>
-        );
-      })}
+    <div className="product-grid">
+      {product.map(product => (
+        <ProductCard 
+          key={product.id}
+          product={product}
+          status={status}
+          handleInc={handleInc}
+          handleDec={handleDec}
+        />
+      ))}
     </div>
   );
 };
