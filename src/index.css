@@ -3,6 +3,15 @@ body{
   font-family: sans-serif;
 }
 
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #222;
+  color: white;
+}
+
 /* Products */
 .product-grid {
   display: grid;
