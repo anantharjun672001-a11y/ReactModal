@@ -2,44 +2,53 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductList from "./Components/ProductList";
 import NavBar from "./Components/NavBar";
+import CartModal from "./Components/CartModal";
 
 const App = () => {
-  const [product, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [status, setStatus] = useState(true);
+  const [showCart, setShowCart] = useState(false);
 
-  const handleInc = () => {
-    setStatus(false);
-    setCart((cart) => cart + 1);
-  };
-  const handleDec = () => {
-    setStatus(true);
-    if (cart > 0) {
-      setCart((cart) => cart - 1);
-    }
-  };
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://fakestoreapi.com/products");
-      setProduct(response.data);
-    } catch (error) {
-      console.log(error);
+      const res = await axios.get("https://fakestoreapi.com/products");
+      setProducts(res.data);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const removeFromCart = (id) => {
+    setCart(cart.filter(item => item.id !== id));
+  };
+
   return (
-    <div>
-      <NavBar />
+    <>
+      <NavBar cartCount={cart.length} openCart={() => setShowCart(true)} />
+
       <ProductList
-        product={product}
-        status={status}
-        handleDec={handleDec}
-        handleInc={handleInc}
+        products={products}
+        cart={cart}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
       />
-    </div>
+
+      {showCart && (
+        <CartModal
+          cart={cart}
+          closeModal={() => setShowCart(false)}
+          removeFromCart={removeFromCart}
+        />
+      )}
+    </>
   );
 };
 

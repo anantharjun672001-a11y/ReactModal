@@ -1,16 +1,15 @@
-import React from "react";
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ product,status,handleInc,handleDec }) => {
+const ProductList = ({ products, cart, addToCart, removeFromCart }) => {
   return (
     <div className="product-grid">
-      {product.map(product => (
-        <ProductCard 
+      {products.map(product => (
+        <ProductCard
           key={product.id}
           product={product}
-          status={status}
-          handleInc={handleInc}
-          handleDec={handleDec}
+          isInCart={cart.some(item => item.id === product.id)}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
       ))}
     </div>

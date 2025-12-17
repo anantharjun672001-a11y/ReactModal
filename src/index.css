@@ -31,7 +31,7 @@ body{
   object-fit: contain;
 }
 
-/* Modal */
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -39,16 +39,24 @@ body{
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Modal Box */
 .modal {
   background: white;
   width: 90%;
   max-width: 500px;
-  margin: 50px auto;
+  max-height: 80vh;      /* 🔥 limit height */
+  overflow-y: auto;      /* 🔥 scroll inside modal */
   padding: 20px;
+  border-radius: 8px;
+  position: relative;
 }
 
+/* Cart Item */
 .cart-item {
   display: flex;
   gap: 10px;
@@ -59,7 +67,3 @@ body{
   height: 60px;
 }
 
-button {
-  padding: 8px 12px;
-  cursor: pointer;
-}
