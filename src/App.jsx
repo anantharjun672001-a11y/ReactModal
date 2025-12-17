@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductList from "./Components/ProductList";
+import NavBar from "./Components/NavBar";
 
 const App = () => {
   const [product, setProduct] = useState([]);
@@ -31,7 +32,7 @@ const App = () => {
   };
   return (
     <div>
-      
+      <NavBar />
       <ProductList
         product={product}
         status={status}

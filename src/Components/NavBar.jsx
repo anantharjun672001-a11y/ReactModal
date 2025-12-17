@@ -5,7 +5,7 @@ const NavBar = () => {
         <div>
             <nav className="navbar">
                 <h2>Fake Store</h2>
-                <button onClick={openCart}>Cart ({cartCount})</button>
+                {/* <button onClick={openCart}>Cart ({cartCount})</button> */}
             </nav>
         </div>
     );

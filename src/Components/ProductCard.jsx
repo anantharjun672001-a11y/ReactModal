@@ -5,10 +5,8 @@ const ProductCard = ({product,handleDec,handleInc,status}) => {
     <div className="card">
       
       <img src={product.image} alt="product.title" />
-      <h1>{product.title}</h1>
-      <h1>${product.price}</h1>
-      <p>{product.description}</p>
-      <p>{product.category}</p>
+      <h4>{product.title}</h4>
+      <p>${product.price}</p>
       {status ? (
         <button onClick={handleInc}>Add To Cart</button>
       ) : (
